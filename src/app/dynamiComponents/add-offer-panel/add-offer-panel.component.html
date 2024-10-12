@@ -1,0 +1,97 @@
+<div class="fixed w-screen h-screen top-0 text-white bg-gray-900 opacity-90">
+  <div class="container mx-auto p-5 opacity-100">
+    <svg
+      (click)="close()"
+      class="w-10 cursor-pointer fill-red-700 opacity-90 hover:opacity-100 mb-5 transition-all duration-500 rotate-45"
+      _ngcontent-ng-c3463935298=""
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path
+        _ngcontent-ng-c3463935298=""
+        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+      ></path>
+    </svg>
+    <form
+      #form="ngForm"
+      (ngSubmit)="submitItem(form.value)"
+      class="flex flex-col flex-wrap"
+    >
+      <input
+        type="text"
+        required=""
+        ngModel
+        name="name"
+        placeholder="write a item name"
+        [(ngModel)]="data.name"
+      />
+
+      <input
+        type="text"
+        required=""
+        ngModel
+        name="price"
+        placeholder="write the item price"
+        [(ngModel)]="data.price"
+      />
+      <input
+        type="text"
+        required=""
+        ngModel
+        name="imgSrc"
+        placeholder="write the item imgSrc"
+        [(ngModel)]="data.imgSrc"
+      />
+      <!-- [hidden]="!isAddPanel" -->
+      <select
+        multiple
+        #test
+        name="items"
+        class="mb-5 p-2 text-black rounded-lg outline-none"
+        required
+        ngModel
+        [(ngModel)]="data.item"
+      >
+        <optgroup label="Pizzas Section">
+          <option *ngFor="let pizza of items.items.pizza" [value]="pizza">
+            {{ pizza.name }}
+          </option>
+        </optgroup>
+
+        <optgroup
+          *ngIf="items.items.drinks.length !== 0"
+          label="Drinks Section"
+        >
+          <option *ngFor="let drink of items.items.drinks" [value]="drink">
+            {{ drink.name }}
+          </option>
+        </optgroup>
+
+        <optgroup
+          *ngIf="items.items.deserts.length !== 0"
+          label="Deserts Section"
+        >
+          <option *ngFor="let desert of items.items.deserts" [value]="desert">
+            {{ desert.name }}
+          </option>
+        </optgroup>
+
+        <optgroup *ngIf="items.items.sides.length !== 0" label="Sides Section">
+          <option *ngFor="let side of items.items.sides" [value]="side">
+            {{ side.name }}
+          </option>
+        </optgroup>
+
+        <optgroup
+          *ngIf="items.items.extras.length !== 0"
+          label="Extras Section"
+        >
+          <option *ngFor="let extra of items.items.extras" [value]="extra">
+            {{ extra.name }}
+          </option>
+        </optgroup>
+      </select>
+      <button [disabled]="!form.valid" type="submit">submit</button>
+    </form>
+  </div>
+</div>

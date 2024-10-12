@@ -1,0 +1,22 @@
+<app-error *ngIf="msgType === 'error'"></app-error>
+<app-succeed *ngIf="msgType === 'suc'"></app-succeed>
+
+<div class="container mx-auto mt-2 p-5 rounded-lg bg-oliveGreen">
+  <div class="items grid grid-cols-1 md:grid-cols-4 gap-5">
+    <div
+      #i
+      class="item flex flex-col items-center bg-mushroomBeige text-tomatoRed p-3 rounded-xl hover:text-mushroomBeige hover:bg-tomatoRed hover:scale-105 transition-all duration-300"
+      *ngFor="let item of items; let i = index"
+    >
+      <img [src]="item.imgSrc" class="rounded-lg cursor-default" alt="" />
+      <h3 class="cursor-default">{{ item?.name }}</h3>
+      <p class="cursor-default">{{ item?.decription }}</p>
+      <span class="text-green-500 cursor-default">{{ item?.price }}$</span>
+      <span
+        (click)="addToCart(item)"
+        class="p-1 rounded-lg cursor-pointer mt-2 text-mushroomBeige bg-tomatoRed border-2 border-mushroomBeige hover:bg-mushroomBeige hover:text-tomatoRed"
+        >Add To Cart</span
+      >
+    </div>
+  </div>
+</div>

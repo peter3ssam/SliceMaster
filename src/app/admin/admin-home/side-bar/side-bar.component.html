@@ -1,0 +1,59 @@
+<div class="w-full">
+  <div
+    class="relative -left-40 w-40 sm:-left-60 sm:w-60 transition-all duration-300 top-20"
+    #side
+  >
+    <svg
+      #arrow
+      (click)="changeSideBarStatues()"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="w-8 absolute -right-10 cursor-pointer top-40 animate-pulse fill-gray-700 transition-all duration-700"
+    >
+      <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <path
+        d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+      />
+    </svg>
+    <div class="hidden" #side2>
+      <span class="p-5 text-zinc-400">SLiceMaster</span>
+
+      <nav class="bg-gray-700 text-mushroomBeige p-5 py-10 rounded-lg">
+        <ul class="">
+          <!-- <li><a routerLink="">home</a></li> -->
+          <li
+            routerLinkActive="active"
+            class="flex justify-center my-5 p-2 rounded-full hover:bg-black hover:text-mushroomBeige transition-all duration-300"
+          >
+            <a routerLink="add-product">Add Product</a>
+          </li>
+          <li
+            routerLinkActive="active"
+            class="flex justify-center mb-5 p-2 rounded-full hover:bg-black hover:text-mushroomBeige transition-all duration-300"
+          >
+            <a routerLink="add-offer">Add Offer</a>
+          </li>
+          <li
+            routerLinkActive="active"
+            class="flex justify-center mb-5 p-2 rounded-full hover:bg-black hover:text-mushroomBeige transition-all duration-300"
+          >
+            <a routerLink="admin-orders">Orders</a>
+          </li>
+          <li
+            routerLinkActive="active"
+            class="flex justify-center mb-5 p-2 rounded-full hover:bg-black hover:text-mushroomBeige transition-all duration-300"
+          >
+            <a routerLink="admin-contact">Contact</a>
+          </li>
+          <li
+            (click)="logout()"
+            routerLinkActive="active"
+            class="flex justify-center mb-5 p-2 rounded-full hover:bg-black hover:text-mushroomBeige transition-all duration-300"
+          >
+            <a routerLink="admin-contact">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="fixed h-full w-full z-10 bg-zinc-800 opacity-90">
+  <div class="container mx-auto bg-oliveGreen m-10 p-5 rounded-lg">
+    <svg
+      (click)="close()"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="w-10 fill-red-500 opacity-60 hover:opacity-100 transition-all duration-300 hover:rotate-90 cursor-pointer"
+    >
+      <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <path
+        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+      />
+    </svg>
+    <form
+      #form="ngForm"
+      (ngSubmit)="submit(form.value)"
+      class="flex flex-col justify-center items-center flex-wrap"
+    >
+      <div
+        *ngIf="isRegister"
+        class="text-mushroomBeige bg-tomatoRed p-3 rounded-lg"
+      >
+        Create New Account
+      </div>
+      <div
+        *ngIf="!isRegister"
+        class="text-mushroomBeige bg-tomatoRed p-3 rounded-lg"
+      >
+        Log In to SliceMaster
+      </div>
+      <input
+        required=""
+        name="userName"
+        type="text"
+        placeholder="Write Your User Name"
+        class="my-5 w-3/4 p-4 sm:w-full rounded-2xl outline-none"
+        ngModel
+        />
+        <input
+        required=""
+        *ngIf="isRegister"
+        name="email"
+        type="text"
+        placeholder="Write Your Email"
+        class="my-5 w-3/4 p-4 sm:w-full rounded-2xl outline-none"
+        ngModel
+        email=""
+      />
+      <input
+        required=""
+        name="password"
+        type="text"
+        placeholder="Write Your Password"
+        class="my-5 w-3/4 p-4 sm:w-full rounded-2xl outline-none"
+        ngModel
+      />
+      <input
+        [disabled]="!form.valid"
+        [value]="!form.valid ? 'Write Valid Data' : 'submit'"
+        type="submit"
+        class="p-2 rounded-full bg-tomatoRed opacity-100 text-mushroomBeige hover:bg-mushroomBeige hover:text-tomatoRed transition-all duration-300"
+      />
+      <div class="text-mushroomBeige" *ngIf="isRegister">
+        If You Have Already An Account Click
+        <span
+          class="text-tomatoRed cursor-pointer"
+          (click)="changeLogenStatues()"
+          >Here</span
+        >
+      </div>
+      <div class="text-mushroomBeige" *ngIf="!isRegister">
+        You Don't Have An Account? Click
+        <span
+          class="text-tomatoRed cursor-pointer"
+          (click)="changeLogenStatues()"
+          >Here</span
+        >
+      </div>
+    </form>
+  </div>
+</div>

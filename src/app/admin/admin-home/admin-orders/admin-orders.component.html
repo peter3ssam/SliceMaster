@@ -1,0 +1,43 @@
+<div
+  class="container mx-auto p-5 bg-gray-800 rounded-lg h-screen text-mushroomBeige overflow-auto"
+>
+  <div class="flex items-center justify-between">
+    <span>Show-Orders</span>
+  </div>
+  <div class="bg-white text-black mt-4 p-2 rounded-lg flex justify-center">
+    Orders
+  </div>
+  @if (!orders) {
+  <div>
+    <span class="text-red-700">no Orders there</span>
+  </div>
+  } @if(orders){ @if(orders.length === 0){
+  <div>
+    <span class="text-red-700">no Orders there</span>
+  </div>
+  }@else {
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-5">
+    <div (click)="openOrderPanel(i)"
+      *ngFor="let order of orders; let i = index"
+      class="flex flex-col items-center bg-gray-600 p-2 rounded-lg cursor-pointer"
+    >
+      <!-- <span class="w-full text-wrap break-words">{{ order.addres }}</span> -->
+      <!-- <span class="">{{ order. }}</span> -->
+      <span class="text-green-500">{{ order.total }}$</span>
+      <span *ngIf="order.orderStatus === 'reqOrder'" class="text-zinc-500"
+        >Not Accepted</span
+      >
+      <span *ngIf="order.orderStatus === 'prepOrder'" class="text-orange-500"
+        >Prepared</span
+      >
+      <span *ngIf="order.orderStatus === 'fail'" class="text-red-600">
+        Fail to Deliver
+      </span>
+      <span *ngIf="order.orderStatus === 'suc'" class="text-green-400"
+        >Deliver Succed</span
+      >
+    </div>
+  </div>
+  } }
+</div>
+<app-order-panel *ngIf="showPanel"></app-order-panel>

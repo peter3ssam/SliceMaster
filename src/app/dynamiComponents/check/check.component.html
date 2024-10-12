@@ -1,0 +1,27 @@
+<div
+  *ngIf="Msg.length !== 0"
+  class="fixed h-full -top-5 w-full z-10 bg-zinc-800 opacity-90"
+>
+  <div class="container mx-auto bg-white m-10 p-5 rounded-lg">
+    <span
+      (click)="close()"
+      class="bg-red-500 p-2 ml-1 rounded-full cursor-pointer text-white flex max-w-fit hover:bg-red-400 transition-all duration-300"
+      >X</span
+    >
+    <div class="flex justify-center w-full">{{ Msg }}</div>
+    <div class="flex justify-end items-end h-2/3 mr-10">
+      <span
+        (click)="ok()"
+        class="bg-blue-400 p-2 rounded-lg cursor-pointer text-slate-500 hover:bg-blue-300 transition-all duration-300"
+      >
+        ok
+      </span>
+      <span
+        (click)="cancel()"
+        class="bg-slate-500 p-2 rounded-lg cursor-pointer text-white ml-2 hover:bg-slate-400 transition-all duration-300"
+      >
+        cancel
+      </span>
+    </div>
+  </div>
+</div>

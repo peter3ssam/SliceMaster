@@ -1,0 +1,7 @@
+<div
+  *ngIf="Msg.length !== 0"
+  class="w-2/6 p-2 fixed z-20 right-0 top-10 rounded-lg text-mushroomBeige bg-green-400 flex justify-between"
+>
+  {{ Msg }}
+  <span class="text-white cursor-pointer mr-3" (click)="close()">X</span>
+</div>

@@ -1,0 +1,30 @@
+<app-error *ngIf="msgType === 'error'"></app-error>
+<app-succeed *ngIf="msgType === 'suc'"></app-succeed>
+<div
+  class="container mx-auto mt-2 bg-oliveGreen p-5 rounded-lg text-mushroomBeige"
+>
+  <div class="p-3 rounded-lg bg-tomatoRed">
+    <div class="flex flex-col items-center">
+      <span class="mb-2">{{ offer?.name }}</span>
+      <img [src]="offer?.imgSrc" class="rounded-lg" alt="" />
+    </div>
+    <span class="flex justify-center">Offer Items</span>
+    <div class="flex flex-wrap justify-evenly">
+      <div
+        *ngFor="let item of offer?.item"
+        class="flex flex-col justify-center items-center"
+      >
+        <span>{{ item.name }}</span>
+        <img [src]="item.imgSrc" class="w-20" alt="" />
+      </div>
+    </div>
+    <div class="flex justify-center text-green-500">
+      <span class="mr-1 text-mushroomBeige">price:</span> {{ offer?.price }}$
+    </div>
+    <span
+      (click)="addToCart()"
+      class="flex justify-center p-1 rounded-lg cursor-pointer mt-2 text-mushroomBeige bg-tomatoRed border-2 border-mushroomBeige hover:bg-mushroomBeige hover:text-tomatoRed"
+      >Add To Cart</span
+    >
+  </div>
+</div>

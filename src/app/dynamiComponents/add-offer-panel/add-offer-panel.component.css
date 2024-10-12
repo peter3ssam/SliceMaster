@@ -1,0 +1,18 @@
+form.ng-invalid {
+  button {
+    color: red;
+  }
+}
+input {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: none;
+  color: black;
+}
+button {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: beige;
+  color: black;
+}

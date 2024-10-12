@@ -1,0 +1,57 @@
+<div
+  class="fixed w-screen h-screen top-0 text-white bg-gray-900 opacity-90 overflow-auto"
+>
+  <div class="container mx-auto p-5 opacity-100">
+    <svg
+      (click)="close()"
+      class="w-10 cursor-pointer fill-red-700 opacity-90 hover:opacity-100 mb-5 transition-all duration-500 rotate-45"
+      _ngcontent-ng-c3463935298=""
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path
+        _ngcontent-ng-c3463935298=""
+        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+      ></path>
+    </svg>
+
+    <div class="flex flex-col items-center h-full w-full">
+      <div>
+        <span class="text-gray-400">UserId: </span
+        ><span class="text-tomatoRed">{{ orderData.userId }}</span>
+      </div>
+      <div class="flex flex-row gap-5 flex-wrap">
+        <div
+          *ngFor="let item of orderData.cart"
+          class="flex flex-wrap flex-col items-center p-2 bg-gray-600 rounded-lg"
+        >
+          <span>{{ item.name }}</span>
+          <img [src]="item.imgSrc" alt="" class="w-20" />
+
+          <span>{{ item.price }}</span>
+        </div>
+        <select
+          name="orderStatus"
+          ngModel
+          [(ngModel)]="orderData.orderStatus"
+          class="my-2 outline-none text-black rounded-lg"
+        >
+          <option class="bg-white text-black" value="reqOrder">Request</option>
+          <option class="bg-white text-black" value="prepOrder">
+            Prepare Order
+          </option>
+          <option class="bg-white text-black" value="fail">
+            Fail To Deliver
+          </option>
+          <option class="bg-white text-black" value="suc">
+            Succeded To Deliver
+          </option>
+        </select>
+      </div>
+      <span class="text-mushroomBeige"
+        >Total:
+        <span class="text-green-600">{{ orderData.total }}<span>$</span></span>
+      </span>
+    </div>
+  </div>
+</div>

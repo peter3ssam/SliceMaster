@@ -1,0 +1,55 @@
+<div
+  class="container mx-auto relative mt-2 sm:h-px rounded-2xl p-2 bg-oliveGreen overflow-hidden"
+  *ngIf="images.length >= 0"
+>
+  <div class="h-full w-full">
+    <a [routerLink]="imageslinks[currentIndex]">
+      <img
+        class="w-full relative transition-all duration-700 h-full"
+        [src]="images[currentIndex]"
+        alt=""
+      />
+    </a>
+  </div>
+  <div class="prev absolute top-1/2 left-0 ml-5" (click)="prevImage()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="w-10 fill-oliveGreen opacity-80 hover:opacity-100 cursor-pointer transition-all duration-300"
+    >
+      <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <path
+        d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM271 135c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-87 87 87 87c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L167 273c-9.4-9.4-9.4-24.6 0-33.9L271 135z"
+      />
+    </svg>
+  </div>
+  <div class="next absolute top-1/2 right-0 mr-5" (click)="nextImage()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      class="w-10 fill-oliveGreen opacity-80 hover:opacity-100 cursor-pointer transition-all duration-300"
+    >
+      <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+      <path
+        d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"
+      />
+    </svg>
+  </div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex mb-5">
+    <span
+      *ngFor="let img of images; let i = index"
+      class="mr-1 cursor-pointer"
+      (click)="chooseImage(i)"
+    >
+      <svg
+        [style]="checkImageIndex(i)"
+        class="w-5 fill-oliveGreen opacity-50 hover:opacity-100 transition-all duration-300"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z" />
+      </svg>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.container {
+  height: 290px;
+}
+@media (min-width: 640px) {
+  .sm\:h-px {
+      height: 490px;
+  }
+}

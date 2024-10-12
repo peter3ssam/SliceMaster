@@ -1,0 +1,35 @@
+<div class="bg-gray-700 h-screen">
+  <div
+    class="container mx-auto p-5 h-full flex items-center justify-center flex-col"
+  >
+    <span class="text-white">Admin Panel</span>
+    <form
+      (ngSubmit)="submitAdminData(form.value)"
+      class="flex flex-col bg-gray-800 h-fit p-5 rounded-lg text-white"
+      #form="ngForm"
+    >
+      <input
+        name="userName"
+        type="text"
+        placeholder="write your user name"
+        class="p-2 rounded-lg outline-none mb-5 inp placeholder:text-gray-50 hover:opacity-100 opacity-80 focus:opacity-100 transition-all duration-300"
+        required=""
+        ngModel
+      />
+      <input
+        name="password"
+        type="text"
+        placeholder="write your password"
+        class="p-2 rounded-lg outline-none mb-5 inp placeholder:text-gray-50 opacity-80 hover:opacity-100 focus:opacity-100 transition-all duration-300"
+        required=""
+        ngModel
+      />
+      <button
+        type="submit"
+        class="p-2 rounded-lg outline-none bg-white inp opacity-80 hover:opacity-100 transition-all duration-300"
+      >
+        submit
+      </button>
+    </form>
+  </div>
+</div>

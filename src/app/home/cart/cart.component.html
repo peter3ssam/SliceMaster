@@ -1,0 +1,140 @@
+<app-check></app-check>
+<!-- *ngIf="showCheck" -->
+<div
+  *ngIf="!user"
+  class="container mx-auto mt-2 p-5 bg-oliveGreen rounded-lg text-red-700 flex justify-center"
+>
+  you must login in first to see your cart
+</div>
+@if (orders.orders.length ! == 0) {
+
+<div
+  *ngIf="user && OrderData?.orderStatus === '' && cart.length === 0"
+  class="container mx-auto mt-2 p-5 bg-oliveGreen rounded-lg text-red-700 flex justify-center"
+>
+  you don't have any product in your cart
+</div>
+} @if (!isChechedout) {
+<div
+  *ngIf="cart && cart.length > 0 && nameOFirstItem !== ''"
+  class="container mt-2 p-5 rounded-lg text-mushroomBeige bg-oliveGreen mx-auto"
+>
+  <div
+    #items
+    *ngFor="let item of cart; let i = index"
+    class="flex flex-col sm:flex-row justify-evenly items-center my-5 rounded-xl bg-mushroomBeige text-tomatoRed hover:text-mushroomBeige hover:bg-tomatoRed transition-all duration-300"
+  >
+    <img [src]="item.imgSrc" alt="" class="w-20 mr-5" />
+    <span class="mr-5">
+      {{ item.name }}
+    </span>
+    <span class="text-green-600"> {{ item.price }}$ </span>
+    <div class="flex items-center flex-col bg-oliveGreen p-3 rounded-lg">
+      <div (click)="remove(item)" class="cursor-pointer">Remove</div>
+    </div>
+  </div>
+  <div *ngIf="checkOutBtn" class="flex justify-center">
+    <form #form="ngForm">
+      <input
+        required=""
+        ngModel
+        type="text"
+        name="Address"
+        placeholder="write your addres here"
+        class="p-1 rounded-lg outline-none caret-tomatoRed text-tomatoRed mr-1"
+      />
+      <select
+        required=""
+        ngModel
+        #select
+        name="PaymentMethod"
+        id=""
+        value="cash"
+        class="p-1 rounded-lg outline-none text-tomatoRed"
+      >
+        <option value="cash">cash</option>
+        <option value="credit">credit</option>
+      </select>
+      <div *ngIf="select.value === 'credit'" class="flex flex-col mt-1">
+        <input
+          required=""
+          type="text"
+          class="p-1 rounded-lg outline-none text-tomatoRed mb-1"
+          placeholder="write your card number"
+          ngModel
+          name="cardNum"
+        />
+        <input
+          required=""
+          type="text"
+          class="p-1 rounded-lg outline-none text-tomatoRed mb-1"
+          placeholder="write the cvv"
+          name="cvv"
+          ngModel
+        />
+        <input
+          required=""
+          name="cardName"
+          type="text"
+          class="p-1 rounded-lg outline-none text-tomatoRed mb-1"
+          placeholder="write name of your card"
+          ngModel
+        />
+      </div>
+      <div class="flex justify-center text-orange-500 mt-1">
+        Total: <span class="text-green-400">{{ OrderData.total }}$</span>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!form.valid"
+        (click)="checkOut(form.value)"
+        class="flex justify-center mt-1 bg-orange-500 hover:bg-orange-400 p-2 rounded-full cursor-pointer w-full"
+      >
+        CheckOut
+      </button>
+    </form>
+  </div>
+  <div *ngIf="!checkOutBtn" class="flex justify-center text-orange-500">
+    Total: <span class="text-green-400">{{ OrderData.total }}$</span>
+  </div>
+  <button
+    (click)="makeTheOrder()"
+    class="flex justify-center bg-orange-500 hover:bg-orange-400 p-2 rounded-full cursor-pointer w-full"
+    *ngIf="!checkOutBtn"
+  >
+    Make The Order
+  </button>
+</div>
+}
+
+<div
+  *ngIf="
+    OrderData?.orderStatus === 'reqOrder' ||
+    (isChechedout && OrderData?.orderStatus === '')
+  "
+  class="container mx-auto mt-2 p-5 bg-zinc-500 rounded-lg text-white flex justify-center"
+>
+  you make order but still not accepted
+</div>
+
+<div
+  *ngIf="OrderData?.orderStatus === 'prepOrder'"
+  class="container mx-auto mt-2 p-5 bg-orange-500 rounded-lg text-white flex justify-center"
+>
+  your order in progress
+</div>
+
+<div
+  *ngIf="OrderData?.orderStatus === 'fail'"
+  class="container mx-auto mt-2 p-5 bg-red-600 rounded-lg text-white flex justify-center"
+>
+  we fail to reach you
+</div>
+
+<div
+  *ngIf="OrderData?.orderStatus === 'suc'"
+  class="container mx-auto mt-2 p-5 bg-green-400 rounded-lg text-white flex justify-center"
+>
+  Your order has been successfully delivered.
+</div>
